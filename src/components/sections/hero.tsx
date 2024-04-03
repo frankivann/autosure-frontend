@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom'
 
 export function Hero() {
   return (
-    <section className='bg-red-0 min-h-dvh relative pt-20 sm:pt-32'>
+    <section className='bg-red-0 h-auto relative pt-20 sm:min-h-dvh sm:pt-32'>
       <div className='bg-gray-0 grid gap-10 max-w-screen-lg mx-auto p-10 sm:grid-cols-5 sm:gap-14'>
         <div className='bg-red-0 sm:col-span-3 sm:place-self-center'>
           <h1 className='text-3xl text-balance font-bold mb-4 leading-none capitalize sm:text-5xl'>
