@@ -1,12 +1,12 @@
 import { RouterProvider, createBrowserRouter } from 'react-router-dom'
 import { HomePage } from '@pages/home'
 import { SignUpPage } from '@pages/signup'
-import { ProtectedPage } from '@pages/protected'
 import { UserPage } from '@pages/user'
 import { ErrorPage } from '@pages/error'
 import { SignInPage } from '@pages/signin'
 import { UserRecordPage } from '@pages/user-record'
 import { BaseLayout } from '@layouts/base'
+import { UserLayout } from '@layouts/user'
 
 // https://reactrouter.com/en/main
 const router = createBrowserRouter([
@@ -32,7 +32,7 @@ const router = createBrowserRouter([
 
   {
     path: 'user',
-    Component: ProtectedPage,
+    Component: UserLayout,
     children: [
       {
         index: true,
