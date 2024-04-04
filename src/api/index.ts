@@ -31,7 +31,7 @@ export const POST = async <T, R> (endpoint: string, data: T, headers?: Record<st
   } catch (error) {
 
     if (error && error instanceof AxiosError) {
-      toast.error(error.response?.data.message)
+      toast.error(error.response?.data.message || 'Error')
 
     } else {
       toast.error('Ha ocurrido un error')
