@@ -17,7 +17,7 @@ export function Hero() {
           <div className='flex flex-col gap-2 sm:flex-row'>
             <Link
               to='/signin'
-              className='bg-orange-500 text-orange-100  text-center font-semibold text-sm px-6 py-2 rounded-lg hover:bg-orange-600 transition-colors'
+              className='bg-orange-500 text-orange-100 text-center font-semibold text-sm px-6 py-2 rounded-lg hover:bg-orange-600 transition-colors'
             >
               Get Started
             </Link>
