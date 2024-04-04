@@ -15,8 +15,9 @@ export function SignUpPage() {
     const data = Object.fromEntries(formData) as SignUpRequest
 
     POST<SignUpRequest, { message: string }>('auth/signup', data).then(res => {
-      navigate('/')
+      navigate('/signin')
       toast.success(res.message)
+
       return
     })
   }
