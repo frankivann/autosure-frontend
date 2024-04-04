@@ -35,6 +35,7 @@ export function useCotization () {
         toast.success(res.message)
         setCotization(defaultState)
         setCotizationCost('0')
+        window.scrollTo({ top: 0 })
 
       })
   }
