@@ -24,8 +24,8 @@ export function UserPage() {
     <section className='bg-red-0 h-auto relative pt-10 sm:min-h-dvh'>
       <div className='bg-red-0 p-10 sm:max-w-screen-xl sm:mx-auto'>
         <header className='bg-yellow-0 flex flex-col justify-between gap-2 py-4 mb-14 border-b sm:flex-row sm:items-center'>
-          <h1 className='text-gray-700 text-xl font-semibold sm:text-2xl'>
-            Car Quote Form
+          <h1 className='text-gray-800 text-xl font-semibold sm:text-2xl'>
+            Car Cotization Form
           </h1>
 
           <div className='flex items-center flex-wrap gap-2'>
@@ -252,7 +252,7 @@ export function UserPage() {
               type='submit'
               className='bg-orange-500 text-orange-100 w-full text-center font-semibold text-sm px-6 py-2 mt-6 rounded-lg hover:bg-orange-600 transition-colors'
             >
-              Register Quote
+              Register Cotization
             </button>
           </form>
         </div>
