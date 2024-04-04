@@ -1,10 +1,16 @@
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { BellIcon, LogoIcon } from './icons'
 import { useEffect, useRef, useState } from 'react'
+import type { User } from '@src/types'
+import useAuthUser from 'react-auth-kit/hooks/useAuthUser'
+import useSignOut from 'react-auth-kit/hooks/useSignOut'
 
 export function UserHeader() {
   const [toggle, setToggle] = useState(false)
   const ref = useRef<HTMLDivElement | null>(null)
+  const user = useAuthUser<User | null>()
+  const signout = useSignOut()
+  const navigate = useNavigate()
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
@@ -21,6 +27,11 @@ export function UserHeader() {
     }
   }, [toggle])
 
+  const handleSignOut = () => {
+    signout()
+    navigate('/')
+  }
+
   return (
     <header className='bg-gray-100/70 backdrop-blur-lg fixed top-0 inset-x-0 z-10'>
       <nav className='bg-green-0 text-sm relative flex items-center flex-wrap gap-2 justify-between max-w-screen-xl mx-auto px-10 py-4'>
@@ -30,8 +41,8 @@ export function UserHeader() {
         >
           <LogoIcon className='text-xs text-orange-500 size-6' />
           <span className='text-gray-700'>/</span>
-          <span className='text-gray-700 font-semibold'>
-            Franklin's Profile
+          <span className='text-gray-700 font-semibold capitalize'>
+            {user?.firstname}'s Profile
           </span>
         </Link>
 
@@ -76,14 +87,16 @@ export function UserHeader() {
                 className='bg-orange-500 size-6 flex items-center justify-center p-[18px] rounded-full'
                 onClick={() => setToggle(!toggle)}
               >
-                <span className='text-orange-100 font-semibold'>F</span>
+                <span className='text-orange-100 font-semibold uppercase'>
+                  {user?.firstname.charAt(0)}
+                </span>
               </button>
 
               {toggle && (
                 <ul className='bg-white w-max absolute top-full right-0 flex flex-col gap-1 p-2 mt-4 border border-gray-300 rounded-lg shadow-lg'>
                   {/*  */}
                   <span className='bg-red-0 text-gray-600 text-xs font-semibold flex px-3 py-2 select-none'>
-                    franklinalvarado@gmail.com
+                    {user?.email}
                   </span>
 
                   <hr className='border-gray-300' />
@@ -105,11 +118,22 @@ export function UserHeader() {
                       Quotes Record
                     </a>
                   </li>
+                  <li>
+                    <a
+                      href='#'
+                      className='bg-red-0 text-gray-700 text-xs flex px-3 py-2 rounded-lg transition-colors hover:bg-gray-100'
+                    >
+                      Settings
+                    </a>
+                  </li>
 
                   <hr className='border-gray-300' />
 
-                  <button className='bg-red-0 text-gray-700 text-xs flex px-3 py-2 rounded-lg transition-colors hover:bg-gray-100'>
-                    Settings
+                  <button
+                    onClick={handleSignOut}
+                    className='bg-red-0 text-gray-700 text-xs flex px-3 py-2 rounded-lg transition-colors hover:bg-gray-100'
+                  >
+                    Sign Out
                   </button>
                 </ul>
               )}
