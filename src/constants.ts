@@ -1,3 +1,14 @@
+import { 
+  AudiIcon,
+  BmwIcon,
+  ChevroletIcon,
+  FordIcon,
+  HondaIcon,
+  HyundaiIcon,
+  NissanIcon,
+  ToyotaIcon 
+} from './components/icons'
+
 export const USER_ROLES = {
   USER: 'user',
   ADMIN: 'admin'
@@ -22,3 +33,19 @@ export const CARS: Record<string, string[]> = {
 export const CAR_BRANDS = Object.keys(CARS)
 export const CAR_MODELS = Object.values(CARS).flat()
 export const BASE_URL = import.meta.env.VITE_API_URL
+
+export const CAR_LOGOS = [
+  ToyotaIcon,
+  HondaIcon,
+  FordIcon,
+  ChevroletIcon,
+  NissanIcon,
+  BmwIcon,
+  AudiIcon,
+  HyundaiIcon
+]
+
+export const BRANDS_WITH_LOGOS = CAR_BRANDS.map((brand, index) => ({
+  brand,
+  Logo: CAR_LOGOS[index]
+}))
