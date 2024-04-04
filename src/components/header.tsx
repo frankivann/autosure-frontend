@@ -7,7 +7,7 @@ export function Header() {
   const show = toggle ? 'flex' : 'hidden'
 
   return (
-    <header className='bg-white fixed top-0 inset-x-0 z-10'>
+    <header className='bg-white/70 backdrop-blur-lg fixed top-0 inset-x-0 z-10'>
       <nav className='text-sm relative flex items-center flex-wrap gap-2 justify-between max-w-screen-xl mx-auto px-10 py-4'>
         <Link
           to='/'
