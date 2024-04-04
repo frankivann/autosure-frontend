@@ -22,7 +22,6 @@ const defaultState: Cotization = {
 export function useCotization () {
 
   const [cotization, setCotization] = useState<Cotization>(defaultState)
-
   const [cotizationCost, setCotizationCost] = useState('0')
   const headers = { 'Authorization': useAuthHeader() as string }
 
@@ -38,6 +37,25 @@ export function useCotization () {
         setCotizationCost('0')
 
       })
+  }
+
+  const handleClick = (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+    const { name, value } = event.currentTarget
+    
+    if (name === 'brand') {
+      setCotization({
+        ...cotization,
+        [name]: value,
+        model: CARS[value][0]
+      })
+
+      return
+    }
+
+    setCotization({
+      ...cotization,
+      [name]: value,
+    })
   }
 
   const handleChange = (event: ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
@@ -63,6 +81,7 @@ export function useCotization () {
     cotizationCost,
     handleSubmit,
     handleChange,
+    handleClick,
     modelOptions
   }
 }
