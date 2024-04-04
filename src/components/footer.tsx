@@ -9,7 +9,7 @@ export function Footer() {
             href='#'
             className='bg-orange-100 p-1.5 rounded-full group'
           >
-            <LogoIcon className='text-orange-500 size-4 hover:scale-110' />
+            <LogoIcon className='text-orange-500 size-4 group-hover:scale-110' />
           </a>
           <p className='text-xs text-center'>
             Made with love by{' '}
