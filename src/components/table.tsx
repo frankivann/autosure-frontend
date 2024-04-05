@@ -38,7 +38,7 @@ export function BasicTable({ data, title, className }: Props) {
               <TableCell>{quote.model}</TableCell>
               <TableCell>{quote.fuelType}</TableCell>
               <TableCell>{quote.usage}</TableCell>
-              <TableCell>{quote.price}</TableCell>
+              <TableCell>${quote.price}</TableCell>
               <TableCell>
                 <Badge
                   className='text-orange-500 font-semibold'
