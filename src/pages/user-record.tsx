@@ -49,7 +49,6 @@ export function UserRecordPage() {
 
         <div className='bg-red-0 sm:max-w-4xl sm:mx-auto'>
           <div className='grid grid-cols-1 gap-4 sm:grid-cols-2'>
-            {/*  */}
             <Card className=' flex flex-col items-center gap-2'>
               <h3 className='text-base font-semibold sm:text-lg'>
                 Number of records
@@ -59,7 +58,7 @@ export function UserRecordPage() {
 
             <BarListChart
               data={data.top3Brands}
-              title='Cars with more Quotes'
+              title='My top 3 brands'
             />
 
             <Card className='sm:col-span-2'>
@@ -68,7 +67,6 @@ export function UserRecordPage() {
                 title='List of quotes'
               />
             </Card>
-            {/*  */}
           </div>
         </div>
       </div>
