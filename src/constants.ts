@@ -28,7 +28,7 @@ export const CARS: Record<string, string[]> = {
   BMW: ['Serie 3', 'Serie 5', 'X3', 'X5'],
   Audi: ['A3', 'A4', 'Q3', 'Q5'],
   Hyundai: ['Elantra', 'Sonata', 'Tucson', 'Santa Fe']
-} as const
+}
 
 export const CAR_BRANDS = Object.keys(CARS)
 export const CAR_MODELS = Object.values(CARS).flat()
