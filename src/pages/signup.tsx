@@ -1,8 +1,8 @@
 import { toast } from 'sonner'
 import { POST } from '@src/api'
+import { LogoIcon } from '@components/icons'
 import { Link, useNavigate } from 'react-router-dom'
 import type { SignUpRequest } from '@src/types'
-import { LogoIcon } from '@src/components/icons'
 
 export function SignUpPage() {
   const navigate = useNavigate()
@@ -14,12 +14,15 @@ export function SignUpPage() {
     const formData = new FormData(el)
     const data = Object.fromEntries(formData) as SignUpRequest
 
-    POST<SignUpRequest, { message: string }>('auth/signup', data).then(res => {
-      navigate('/signin')
-      toast.success(res.message)
+    POST<SignUpRequest, { message: string }>('auth/signup', data).then(
+      (res) => {
+        navigate('/signin')
+        toast.success(res.message)
+        window.scrollTo({ top: 0 })
 
-      return
-    })
+        return
+      }
+    )
   }
 
   return (
@@ -46,6 +49,7 @@ export function SignUpPage() {
               name='firstname'
               required
               placeholder='Franklin'
+              minLength={2}
               className='bg-gray-50 w-full text-xs px-4 py-2 border border-gray-400 rounded-lg transition placeholder:text-gray-300 focus-visible:outline-gray-400 hover:border-gray-500 sm:text-sm'
             />
           </label>
@@ -59,6 +63,7 @@ export function SignUpPage() {
               name='lastname'
               required
               placeholder='Iván'
+              minLength={2}
               className='bg-gray-50 w-full text-xs px-4 py-2 border border-gray-400 rounded-lg transition placeholder:text-gray-300 focus-visible:outline-gray-400 hover:border-gray-500 sm:text-sm'
             />
           </label>
@@ -72,6 +77,7 @@ export function SignUpPage() {
               name='username'
               required
               placeholder='frankivann'
+              minLength={2}
               className='bg-gray-50 w-full text-xs px-4 py-2 border border-gray-400 rounded-lg transition placeholder:text-gray-300 focus-visible:outline-gray-400 hover:border-gray-500 sm:text-sm'
             />
           </label>
@@ -85,6 +91,7 @@ export function SignUpPage() {
               name='password'
               required
               placeholder='unbeatable 123'
+              minLength={3}
               className='bg-gray-50 w-full text-xs px-4 py-2 border border-gray-400 rounded-lg transition placeholder:text-gray-300 focus-visible:outline-gray-400 hover:border-gray-500 sm:text-sm'
             />
           </label>

@@ -1,9 +1,8 @@
-import useSignIn from 'react-auth-kit/hooks/useSignIn'
-import { Link, useNavigate } from 'react-router-dom'
 import { POST } from '@src/api'
-import { USER_ROLES } from '@src/constants'
+import { LogoIcon } from '@components/icons'
+import { Link, useNavigate } from 'react-router-dom'
 import type { SignInRequest, SignInResponse } from '@src/types'
-import { LogoIcon } from '@src/components/icons'
+import useSignIn from 'react-auth-kit/hooks/useSignIn'
 
 export function SignInPage() {
   const navigate = useNavigate()
@@ -26,7 +25,7 @@ export function SignInPage() {
           userState: user
         })
 
-        user.role === USER_ROLES.ADMIN ? navigate('/admin') : navigate('/user')
+        navigate('/user')
       }
     )
   }
@@ -55,6 +54,7 @@ export function SignInPage() {
               name='username'
               required
               placeholder='frankivann'
+              minLength={2}
               className='bg-gray-50 w-full text-xs px-4 py-2 border border-gray-400 rounded-lg transition placeholder:text-gray-300 focus-visible:outline-gray-400 hover:border-gray-500 sm:text-sm'
             />
           </label>
@@ -68,6 +68,7 @@ export function SignInPage() {
               name='password'
               required
               placeholder='unbeatable 123'
+              minLength={3}
               className='bg-gray-50 w-full text-xs px-4 py-2 border border-gray-400 rounded-lg transition placeholder:text-gray-300 focus-visible:outline-gray-400 hover:border-gray-500 sm:text-sm'
             />
           </label>
