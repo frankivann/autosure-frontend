@@ -1,11 +1,11 @@
+import { useState } from 'react'
 import { POST } from '@src/api'
 import { CARS } from '@src/constants'
-import { Cotization } from '@src/types'
-import { calculateCotizationCost } from '@utils/cotization'
-import { useState } from 'react'
+import { toast } from 'sonner'
+import { calculateCotizationCost, hasEmptyValues } from '@utils/cotization'
+import type { Cotization } from '@src/types'
 import type { ChangeEvent } from 'react'
 import useAuthHeader from 'react-auth-kit/hooks/useAuthHeader'
-import { toast } from 'sonner'
 
 const defaultState: Cotization = {
   year: '',
@@ -28,6 +28,13 @@ export function useCotization () {
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault()
     cotization.price = cotizationCost
+
+    if (hasEmptyValues(cotization)) {
+      toast.error('fill in all the fields of the form')
+      window.scrollTo({ top: 0 })
+
+      return
+    }
 
     POST<Cotization, { message: string }>('cotization', cotization, headers)
       .then(res => {
