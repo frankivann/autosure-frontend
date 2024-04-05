@@ -1,5 +1,6 @@
 import { useCotization } from '@hooks/use-cotization'
 import { ArrowShareIcon } from '@components/icons'
+import { Link } from 'react-router-dom'
 import {
   BRANDS_WITH_LOGOS,
   FUEL_TYPES,
@@ -29,16 +30,13 @@ export function UserPage() {
           </h1>
 
           <div className='flex items-center flex-wrap gap-2'>
-            <button
-              // onClick={}
+            <Link
+              to='record'
               className='bg-orange-500 text-gray-100 w-full text-center font-semibold text-xs px-6 py-2 rounded-lg hover:bg-orange-600 transition-colors sm:w-fit sm:text-sm'
             >
               Check history
-            </button>
-            <button
-              // onClick={}
-              className='bg-gray-100 text-gray-700 w-full text-center font-semibold text-xs px-6 py-2 border rounded-lg hover:bg-gray-200 transition-colors sm:w-fit sm:text-sm'
-            >
+            </Link>
+            <button className='bg-gray-100 text-gray-700 w-full text-center font-semibold text-xs px-6 py-2 border rounded-lg hover:bg-gray-200 transition-colors sm:w-fit sm:text-sm'>
               Payment
             </button>
           </div>
@@ -101,7 +99,7 @@ export function UserPage() {
                 Model
               </span>
               <div className='grid grid-cols-2 gap-2 sm:grid-cols-4'>
-                {modelOptions?.map(model => {
+                {modelOptions?.map((model) => {
                   const selected =
                     model === cotization.model
                       ? 'border-orange-500 bg-orange-100 hover:bg-orange-200'
@@ -134,7 +132,7 @@ export function UserPage() {
                 required
                 className='text-gray-500 w-full text-xs px-4 py-2 border border-gray-300 rounded-lg transition placeholder:text-gray-300 focus-visible:outline-gray-500 hover:border-gray-400 sm:text-sm'
               >
-                {FUEL_TYPES?.map(fuel => (
+                {FUEL_TYPES?.map((fuel) => (
                   <option
                     key={fuel}
                     value={fuel}
@@ -156,7 +154,7 @@ export function UserPage() {
                 required
                 className='text-gray-500 w-full text-xs px-4 py-2 border border-gray-300 rounded-lg transition placeholder:text-gray-300 focus-visible:outline-gray-500 hover:border-gray-400 sm:text-sm'
               >
-                {TRANSMISSION_TYPES?.map(transmission => (
+                {TRANSMISSION_TYPES?.map((transmission) => (
                   <option
                     key={transmission}
                     value={transmission}
@@ -194,7 +192,7 @@ export function UserPage() {
                 required
                 className='text-gray-500 w-full text-xs px-4 py-2 border border-gray-300 rounded-lg transition placeholder:text-gray-300 focus-visible:outline-gray-500 hover:border-gray-400 sm:text-sm'
               >
-                {LOCATIONS?.map(location => (
+                {LOCATIONS?.map((location) => (
                   <option
                     key={location}
                     value={location}
@@ -216,7 +214,7 @@ export function UserPage() {
                 required
                 className='text-gray-500 w-full text-xs px-4 py-2 border border-gray-300 rounded-lg transition placeholder:text-gray-300 focus-visible:outline-gray-500 hover:border-gray-400 sm:text-sm'
               >
-                {USAGES?.map(usage => (
+                {USAGES?.map((usage) => (
                   <option
                     key={usage}
                     value={usage}
@@ -252,7 +250,7 @@ export function UserPage() {
               type='submit'
               className='bg-orange-500 text-orange-100 w-full text-center font-semibold text-sm px-6 py-2 mt-6 rounded-lg hover:bg-orange-600 transition-colors'
             >
-              Register Cotization
+              Add Cotization
             </button>
           </form>
         </div>
