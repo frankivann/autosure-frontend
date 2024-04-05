@@ -4,10 +4,10 @@ import { Outlet } from 'react-router-dom'
 
 export function BaseLayout() {
   return (
-    <main>
+    <>
       <Header />
       <Outlet />
       <Footer />
-    </main>
+    </>
   )
 }
