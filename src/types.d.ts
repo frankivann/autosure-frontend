@@ -68,4 +68,22 @@ type Cotization = {
   price: string
 }
 
-type UserCotizationResponse = Cotization & { id: number };
+export interface UserCotizationResponse {
+  numberOfQuotes: number;
+  top3Brands:     Top3Brand[];
+  quotes:         Quote[];
+}
+
+export interface Quote {
+  id:       string;
+  brand:    string;
+  model:    string;
+  fuelType: string;
+  usage:    string;
+  price:    number;
+}
+
+export interface Top3Brand {
+  name: string;
+  value: number;
+}
