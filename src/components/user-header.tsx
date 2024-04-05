@@ -93,8 +93,7 @@ export function UserHeader() {
               </button>
 
               {toggle && (
-                <ul className='bg-white w-max absolute top-full right-0 flex flex-col gap-1 p-2 mt-4 border border-gray-300 rounded-lg shadow-lg'>
-                  {/*  */}
+                <ul className='bg-white min-w-52 absolute top-full right-0 flex flex-col gap-1 p-2 mt-4 border border-gray-300 rounded-lg shadow-lg'>
                   <span className='bg-red-0 text-gray-600 text-xs font-semibold flex px-3 py-2 select-none'>
                     {user?.email}
                   </span>
@@ -115,7 +114,7 @@ export function UserHeader() {
                       href='#'
                       className='bg-red-0 text-gray-700 text-xs flex px-3 py-2 rounded-lg transition-colors hover:bg-gray-100'
                     >
-                      Quotes Record
+                      Payment
                     </a>
                   </li>
                   <li>
