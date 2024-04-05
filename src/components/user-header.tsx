@@ -49,12 +49,12 @@ export function UserHeader() {
         <div className='bg-yellow-0 flex items-center gap-10'>
           <ul className='hidden items-center sm:flex'>
             <li>
-              <a
-                href='#'
+              <Link
+                to='/user'
                 className='text-sm flex px-3 py-1 transition-colors hover:text-gray-700'
               >
-                New Quote
-              </a>
+                Add Cotization
+              </Link>
             </li>
             <li>
               <a
