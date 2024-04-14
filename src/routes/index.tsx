@@ -1,12 +1,12 @@
 import { RouterProvider, createBrowserRouter } from 'react-router-dom'
-import { HomePage } from '@pages/home'
-import { SignUpPage } from '@pages/signup'
-import { UserPage } from '@pages/user'
-import { ErrorPage } from '@pages/error'
-import { SignInPage } from '@pages/signin'
-import { UserRecordPage } from '@pages/user-record'
 import { BaseLayout } from '@layouts/base'
 import { UserLayout } from '@layouts/user'
+import { HomePage } from '@routes/base/home'
+import { SignInPage } from '@routes/base/signin'
+import { SignUpPage } from '@routes/base/signup'
+import { ErrorPage } from '@routes/base/error'
+import { UserPage } from '@routes/user/user'
+import { UserRecordPage } from '@routes/user/record'
 
 // https://reactrouter.com/en/main
 const router = createBrowserRouter([
