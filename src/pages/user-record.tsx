@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react'
 import { GET } from '@src/api'
 import { Link } from 'react-router-dom'
-import { BasicTable } from '@components/table'
-import { BarListChart } from '@components/bar-list'
+import { TableChart } from '@components/charts/table'
+import { BarListChart } from '@components/charts/bar-list'
 import { Card } from '@tremor/react'
 import type { UserCotizationResponse } from '@src/types'
 import useAuthHeader from 'react-auth-kit/hooks/useAuthHeader'
@@ -62,7 +62,7 @@ export function UserRecordPage() {
             />
 
             <Card className='sm:col-span-2'>
-              <BasicTable
+              <TableChart
                 data={data.quotes}
                 title='List of quotes'
               />

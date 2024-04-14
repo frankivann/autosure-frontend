@@ -1,4 +1,4 @@
-import { GithubIcon, LikedinIcon, LogoIcon } from './icons'
+import { GithubIcon, LikedinIcon, LogoIcon } from '../icons'
 
 export function Footer() {
   return (

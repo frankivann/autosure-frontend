@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { HamburgerIcon, LogoIcon } from './icons'
+import { HamburgerIcon, LogoIcon } from '../icons'
 import { Link } from 'react-router-dom'
 
 export function Header() {

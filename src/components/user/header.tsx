@@ -1,11 +1,11 @@
 import { Link, useNavigate } from 'react-router-dom'
-import { BellIcon, LogoIcon } from './icons'
+import { BellIcon, LogoIcon } from '../icons'
 import { useEffect, useRef, useState } from 'react'
 import type { User } from '@src/types'
 import useAuthUser from 'react-auth-kit/hooks/useAuthUser'
 import useSignOut from 'react-auth-kit/hooks/useSignOut'
 
-export function UserHeader() {
+export function Header() {
   const [toggle, setToggle] = useState(false)
   const ref = useRef<HTMLDivElement | null>(null)
   const user = useAuthUser<User | null>()

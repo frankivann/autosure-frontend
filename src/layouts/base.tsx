@@ -1,5 +1,5 @@
-import { Footer } from '@components/footer'
-import { Header } from '@components/header'
+import { Footer } from '@src/components/common/footer'
+import { Header } from '@src/components/common/header'
 import { Outlet } from 'react-router-dom'
 
 export function BaseLayout() {

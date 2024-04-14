@@ -15,7 +15,7 @@ interface Props {
   className?: string
 }
 
-export function BasicTable({ data, title, className }: Props) {
+export function TableChart({ data, title, className }: Props) {
   return (
     <>
       <h3 className='text-base font-semibold mb-2 sm:text-lg'>{title}</h3>
