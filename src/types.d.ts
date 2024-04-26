@@ -68,13 +68,21 @@ type Cotization = {
   price: string
 }
 
-export interface UserCotizationResponse {
+type CarInfo = {
+  models: string[]
+  price: number
+  logo: (props: SVGProps<SVGSVGElement>) => JSX.Element
+}
+
+type Car = Record<string, CarInfo>
+
+interface UserCotizationResponse {
   numberOfQuotes: number;
   top3Brands:     Top3Brand[];
   quotes:         Quote[];
 }
 
-export interface Quote {
+interface Quote {
   id:       string;
   brand:    string;
   model:    string;
@@ -83,7 +91,7 @@ export interface Quote {
   price:    number;
 }
 
-export interface Top3Brand {
+interface Top3Brand {
   name: string;
   value: number;
 }
