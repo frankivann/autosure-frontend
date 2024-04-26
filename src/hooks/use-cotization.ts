@@ -54,8 +54,15 @@ export function useCotization () {
       setCotization({
         ...cotization,
         [name]: value,
-        model: CARS[value][0]
+        model: CARS[value].models[0]
       })
+
+      const cost = calculateCotizationCost({
+        ...cotization,
+        [name]: value
+      })
+  
+      setCotizationCost(cost)
 
       return
     }
@@ -82,7 +89,7 @@ export function useCotization () {
     setCotizationCost(cost)
   }
 
-  const modelOptions = CARS[cotization.brand]
+  const modelOptions = CARS[cotization.brand]?.models
 
   return {
     cotization,
