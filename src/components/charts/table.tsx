@@ -1,4 +1,4 @@
-import type { Quote } from '@src/types'
+import type { RecordResponse } from '@src/types'
 import {
   Badge,
   Table,
@@ -6,11 +6,11 @@ import {
   TableCell,
   TableHead,
   TableHeaderCell,
-  TableRow
+  TableRow,
 } from '@tremor/react'
 
 interface Props {
-  data: Quote[]
+  data: RecordResponse[]
   title: string
   className?: string
 }
@@ -32,13 +32,13 @@ export function TableChart({ data, title, className }: Props) {
           </TableRow>
         </TableHead>
         <TableBody>
-          {data?.map((quote) => (
-            <TableRow key={quote.id}>
-              <TableCell>{quote.brand}</TableCell>
-              <TableCell>{quote.model}</TableCell>
-              <TableCell>{quote.fuelType}</TableCell>
-              <TableCell>{quote.usage}</TableCell>
-              <TableCell>${quote.price}</TableCell>
+          {data?.map((record) => (
+            <TableRow key={record.id}>
+              <TableCell>{record.brand}</TableCell>
+              <TableCell>{record.model}</TableCell>
+              <TableCell>{record.fuelType}</TableCell>
+              <TableCell>{record.usage}</TableCell>
+              <TableCell>${record.price}</TableCell>
               <TableCell>
                 <Badge
                   className='text-orange-500 font-semibold'
