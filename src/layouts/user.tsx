@@ -6,9 +6,9 @@ import useIsAuthenticated from 'react-auth-kit/hooks/useIsAuthenticated'
 export function UserLayout() {
   const isAuthenticated = useIsAuthenticated()
 
-  if (!isAuthenticated()) {
-    return <Navigate to='/' />
-  }
+  // if (!isAuthenticated()) {
+  //   return <Navigate to='/' />
+  // }
 
   return (
     <>
