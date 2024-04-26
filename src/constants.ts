@@ -6,8 +6,9 @@ import {
   HondaIcon,
   HyundaiIcon,
   NissanIcon,
-  ToyotaIcon 
+  ToyotaIcon
 } from './components/icons'
+import type { Car } from './types'
 
 export const USER_ROLES = {
   USER: 'user',
@@ -19,33 +20,54 @@ export const TRANSMISSION_TYPES = ['Automatic', 'Manual'] as const
 export const LOCATIONS = ['City', 'Rural'] as const
 export const USAGES = ['Personal', 'Commercial'] as const
 
-export const CARS: Record<string, string[]> = {
-  Toyota: ['Corolla', 'Camry', 'RAV4', 'Prius'],
-  Honda: ['Civic', 'Accord', 'CR-V', 'HR-V'],
-  Ford: ['Fiesta', 'Focus', 'Fusion', 'Escape'],
-  Chevrolet: ['Spark', 'Cruze', 'Malibu', 'Equinox'],
-  Nissan: ['Sentra', 'Altima', 'Rogue', 'Murano'],
-  BMW: ['Serie 3', 'Serie 5', 'X3', 'X5'],
-  Audi: ['A3', 'A4', 'Q3', 'Q5'],
-  Hyundai: ['Elantra', 'Sonata', 'Tucson', 'Santa Fe']
+export const CARS: Car = {
+  Toyota: {
+    models: ['Corolla', 'Camry', 'RAV4', 'Prius'],
+    price: 33,
+    logo: ToyotaIcon
+  },
+  Honda: {
+    models: ['Civic', 'Accord', 'CR-V', 'HR-V'],
+    price: 43,
+    logo: HondaIcon
+  },
+  Ford: {
+    models: ['Fiesta', 'Focus', 'Fusion', 'Escape'],
+    price: 120,
+    logo: FordIcon
+  },
+  Chevrolet: {
+    models: ['Spark', 'Cruze', 'Malibu', 'Equinox'],
+    price: 220,
+    logo: ChevroletIcon
+  },
+  Nissan: {
+    models: ['Sentra', 'Altima', 'Rogue', 'Murano'],
+    price: 70,
+    logo: NissanIcon
+  },
+  BMW: {
+    models: ['Serie 3', 'Serie 5', 'X3', 'X5'],
+    price: 499,
+    logo: BmwIcon
+  },
+  Audi: {
+    models: ['A3', 'A4', 'Q3', 'Q5'],
+    price: 298,
+    logo: AudiIcon
+  },
+  Hyundai: {
+    models: ['Elantra', 'Sonata', 'Tucson', 'Santa Fe'],
+    price: 100,
+    logo: HyundaiIcon
+  }
 } as const
 
 export const CAR_BRANDS = Object.keys(CARS)
-export const CAR_MODELS = Object.values(CARS).flat()
+export const CAR_MODELS = Object.values(CARS).flatMap(item => item.models)
 export const BASE_URL = import.meta.env.VITE_API_URL
 
-export const CAR_LOGOS = [
-  ToyotaIcon,
-  HondaIcon,
-  FordIcon,
-  ChevroletIcon,
-  NissanIcon,
-  BmwIcon,
-  AudiIcon,
-  HyundaiIcon
-]
-
-export const BRANDS_WITH_LOGOS = CAR_BRANDS.map((brand, index) => ({
+export const BRANDS_WITH_LOGOS = CAR_BRANDS.map(brand => ({
   brand,
-  Logo: CAR_LOGOS[index]
+  Logo: CARS[brand].logo
 }))
