@@ -1,7 +1,8 @@
+import { CARS } from '@src/constants'
 import type { Cotization } from '@src/types'
 
 export function calculateCotizationCost (cotization: Cotization): string {
-  const { year, location, usage, fuelType } = cotization
+  const { year, brand, location, usage, fuelType } = cotization
   let cost = 300
   
   if (Number(year) >= 2018) {
@@ -19,6 +20,9 @@ export function calculateCotizationCost (cotization: Cotization): string {
   else if (fuelType === 'Diesel') cost += 35
   else if (fuelType === 'Hybrid') cost += 155
   else cost += 200
+
+  const price = CARS[brand]?.price ?? 0
+  cost += price
 
   return cost.toString()
 }
