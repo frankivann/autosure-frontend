@@ -6,17 +6,17 @@ import {
   FUEL_TYPES,
   LOCATIONS,
   TRANSMISSION_TYPES,
-  USAGES
+  USAGES,
 } from '@src/constants'
 
 export function UserPage() {
   const {
     cotization,
     cotizationCost,
+    modelOptions,
     handleChange,
     handleSubmit,
     handleClick,
-    modelOptions
   } = useCotization()
 
   const formattedPrice = '$' + cotizationCost
