@@ -4,23 +4,23 @@ import { Link } from 'react-router-dom'
 import { TableChart } from '@components/charts/table'
 import { BarListChart } from '@components/charts/bar-list'
 import { Card } from '@tremor/react'
-import type { UserCotizationResponse } from '@src/types'
+import type { CotizationResponse } from '@src/types'
 import useAuthHeader from 'react-auth-kit/hooks/useAuthHeader'
 
 const defaultState = {
-  numberOfQuotes: 0,
-  quotes: [],
-  top3Brands: []
+  numberOfCotizations: 0,
+  records: [],
+  top3Brands: [],
 }
 
 export function UserRecordPage() {
-  const [data, setData] = useState<UserCotizationResponse>(defaultState)
+  const [data, setData] = useState<CotizationResponse>(defaultState)
   const authHeader = useAuthHeader() as string
 
   useEffect(
     function () {
-      GET<UserCotizationResponse>('cotization/user', {
-        Authorization: authHeader
+      GET<CotizationResponse>('cotization/user', {
+        Authorization: authHeader,
       }).then((res) => setData(res))
     },
     [authHeader]
@@ -53,7 +53,9 @@ export function UserRecordPage() {
               <h3 className='text-base font-semibold sm:text-lg'>
                 Number of records
               </h3>
-              <p className='text-orange-400 text-6xl'>{data.numberOfQuotes}</p>
+              <p className='text-orange-400 text-6xl'>
+                {data.numberOfCotizations}
+              </p>
             </Card>
 
             <BarListChart
@@ -63,7 +65,7 @@ export function UserRecordPage() {
 
             <Card className='sm:col-span-2'>
               <TableChart
-                data={data.quotes}
+                data={data.records}
                 title='List of quotes'
               />
             </Card>
