@@ -9,7 +9,7 @@ import {
 } from '@src/constants'
 
 /**
- * Auth Types definitions
+ * Auth types definitions
  */
 
 type SignUpRequest = {
@@ -31,12 +31,10 @@ type SignInResponse = {
 }
 
 /**
- * User Types definitions
+ * User types definitions
  */
 
-type UserRoles = typeof USER_ROLES[keyof typeof USER_ROLES]
-
-interface User {
+type User = {
   firstname: string
   lastname: string
   username: string
@@ -45,9 +43,11 @@ interface User {
   id: string
 }
 
+type UserRoles = typeof USER_ROLES[keyof typeof USER_ROLES]
+
 /**
- * Cotization Types definitions
-*/
+ * Cotization types definitions
+ */
 
 type CarBrand = typeof CAR_BRANDS[number]
 type CarModel = typeof CAR_MODELS[number]
@@ -76,22 +76,26 @@ type CarInfo = {
 
 type Car = Record<string, CarInfo>
 
-interface UserCotizationResponse {
-  numberOfQuotes: number;
-  top3Brands:     Top3Brand[];
-  quotes:         Quote[];
+/**
+ * User Cotization types definitions
+ */
+
+type CotizationResponse = {
+  numberOfCotizations: number;
+  top3Brands: Top3Brand[];
+  records: RecordResponse[];
 }
 
-interface Quote {
-  id:       string;
-  brand:    string;
-  model:    string;
+type RecordResponse = {
+  id: string;
+  brand: string;
+  model: string;
   fuelType: string;
-  usage:    string;
-  price:    number;
+  usage: string;
+  price: number;
 }
 
-interface Top3Brand {
+type Top3Brand = {
   name: string;
   value: number;
 }
