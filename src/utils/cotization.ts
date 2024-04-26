@@ -1,26 +1,26 @@
 import type { Cotization } from '@src/types'
 
 export function calculateCotizationCost (cotization: Cotization): string {
-  const { year, numberOfDoors, location, usage, fuelType } = cotization
-  let cost = 500
-
-  const carAge = new Date().getFullYear() - Number(year)
-  cost -= carAge
-
-  if (Number(numberOfDoors) > 2) {
-    cost += 50 * (Number(numberOfDoors) - 2)
+  const { year, location, usage, fuelType } = cotization
+  let cost = 300
+  
+  if (Number(year) >= 2018) {
+    cost += 99
+  } else if (Number(year) > 1999 && Number(year) < 2018) {
+    cost += 10
+  } else {
+    cost += 400
   }
 
-  location === 'Rural' ? cost += 122 : cost += 96
-  usage === 'Commercial' ? cost += 201 : cost += 88
+  location === 'Rural' ? cost += 102 : cost += 66
+  usage === 'Commercial' ? cost += 171 : cost += 78
 
-  if (fuelType === 'Gasoline') cost += 194
-  else if (fuelType === 'Diesel') cost += 65
-  else if (fuelType === 'Hybrid') cost += 165
+  if (fuelType === 'Gasoline') cost += 174
+  else if (fuelType === 'Diesel') cost += 35
+  else if (fuelType === 'Hybrid') cost += 155
   else cost += 200
 
-  const totalCost = cost < 0 || cost > 5000 ? 0 : cost
-  return totalCost.toString()
+  return cost.toString()
 }
 
 export function hasEmptyValues<T extends Record<string, unknown>>(obj: T): boolean {
