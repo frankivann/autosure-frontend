@@ -1,28 +1,29 @@
-import { toast } from 'sonner'
+import { useState } from 'react'
 import { POST } from '@src/api'
+import { toast } from 'sonner'
 import { LogoIcon } from '@components/icons'
 import { Link, useNavigate } from 'react-router-dom'
 import type { SignUpRequest } from '@src/types'
 
 export function SignUpPage() {
   const navigate = useNavigate()
+  const [loading, setLoading] = useState(false)
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault()
+    setLoading(true)
 
     const el = event.target as HTMLFormElement
     const formData = new FormData(el)
     const data = Object.fromEntries(formData) as SignUpRequest
 
-    POST<SignUpRequest, { message: string }>('auth/signup', data).then(
-      (res) => {
+    POST<SignUpRequest, { message: string }>('auth/signup', data)
+      .then((res) => {
         navigate('/signin')
         toast.success(res.message)
         window.scrollTo({ top: 0 })
-
-        return
-      }
-    )
+      })
+      .finally(() => setLoading(false))
   }
 
   return (
@@ -110,8 +111,9 @@ export function SignUpPage() {
           </label>
 
           <button
+            disabled={loading}
             type='submit'
-            className='bg-orange-500 text-orange-100 text-center font-semibold text-sm px-6 py-2 mt-4 rounded-lg hover:bg-orange-600 transition-colors'
+            className='bg-orange-500 text-orange-100 text-center font-semibold text-sm px-6 py-2 mt-4 rounded-lg hover:bg-orange-600 transition-colors disabled:bg-orange-300'
           >
             Sign Up
           </button>

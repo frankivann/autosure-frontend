@@ -1,22 +1,26 @@
+import { useState } from 'react'
 import { POST } from '@src/api'
+import { toast } from 'sonner'
 import { LogoIcon } from '@components/icons'
 import { Link, useNavigate } from 'react-router-dom'
 import type { SignInRequest, SignInResponse } from '@src/types'
 import useSignIn from 'react-auth-kit/hooks/useSignIn'
 
 export function SignInPage() {
+  const [loading, setLoading] = useState(false)
   const navigate = useNavigate()
   const signin = useSignIn()
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault()
+    setLoading(true)
 
     const el = event.target as HTMLFormElement
     const formData = new FormData(el)
     const data = Object.fromEntries(formData) as SignInRequest
 
-    POST<SignInRequest, SignInResponse>('auth/signin', data).then(
-      ({ accessToken, user }) => {
+    POST<SignInRequest, SignInResponse>('auth/signin', data)
+      .then(({ accessToken, user }) => {
         signin({
           auth: {
             token: accessToken,
@@ -26,8 +30,11 @@ export function SignInPage() {
         })
 
         navigate('/user')
-      }
-    )
+        toast.success(`Welcome ${user.firstname} ${user.lastname}`, {
+          className: 'capitalize'
+        })
+      })
+      .finally(() => setLoading(false))
   }
 
   return (
@@ -74,8 +81,9 @@ export function SignInPage() {
           </label>
 
           <button
+            disabled={loading}
             type='submit'
-            className='bg-orange-500 text-orange-100 text-center font-semibold text-sm px-6 py-2 mt-4 rounded-lg hover:bg-orange-600 transition-colors'
+            className='bg-orange-500 text-orange-100 text-center font-semibold text-sm px-6 py-2 mt-4 rounded-lg hover:bg-orange-600 transition-colors disabled:bg-orange-300'
           >
             Sign In
           </button>

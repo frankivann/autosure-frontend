@@ -14,6 +14,7 @@ export function UserPage() {
     cotization,
     cotizationCost,
     modelOptions,
+    loading,
     handleChange,
     handleSubmit,
     handleClick,
@@ -247,8 +248,9 @@ export function UserPage() {
             </div>
 
             <button
+              disabled={loading}
               type='submit'
-              className='bg-orange-500 text-orange-100 w-full text-center font-semibold text-sm px-6 py-2 mt-6 rounded-lg hover:bg-orange-600 transition-colors'
+              className='bg-orange-500 text-orange-100 w-full text-center font-semibold text-sm px-6 py-2 mt-6 rounded-lg hover:bg-orange-600 transition-colors disabled:bg-orange-300'
             >
               Add Cotization
             </button>
