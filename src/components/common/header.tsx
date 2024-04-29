@@ -5,7 +5,7 @@ import { useClickOutside } from '@src/hooks/use-click-outside'
 export function Header() {
   const { ref, toggle, updateToggle } = useClickOutside<HTMLElement>()
 
-  const show = toggle ? 'flex' : 'hidden'
+  const dropdown = toggle ? 'flex' : 'hidden'
   const background = toggle
     ? 'bg-gray-50 backdrop-blur-none'
     : 'bg-white/80 backdrop-blur-lg'
@@ -42,7 +42,7 @@ export function Header() {
         </div>
 
         <ul
-          className={`${show} bg-gray-50 text-black text-xs absolute top-full inset-x-0 flex flex-col flex-wrap transition-all sm:relative sm:text-sm sm:flex sm:flex-row sm:items-center sm:gap-5 sm:bg-inherit`}
+          className={`${dropdown} bg-gray-50 text-black text-xs absolute top-full inset-x-0 flex flex-col flex-wrap transition-all sm:relative sm:text-sm sm:flex sm:flex-row sm:items-center sm:gap-5 sm:bg-transparent`}
         >
           <li>
             <a
