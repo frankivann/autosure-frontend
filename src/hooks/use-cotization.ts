@@ -23,11 +23,13 @@ export function useCotization () {
 
   const [cotization, setCotization] = useState<Cotization>(defaultState)
   const [cotizationCost, setCotizationCost] = useState('0')
+  const [loading, setLoading] = useState(false)
   const headers = { 'Authorization': useAuthHeader() as string }
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault()
     cotization.price = cotizationCost
+    setLoading(true)
 
     if (hasEmptyValues(cotization)) {
       toast.error('fill in all the fields of the form')
@@ -44,7 +46,7 @@ export function useCotization () {
         setCotizationCost('0')
         window.scrollTo({ top: 0 })
 
-      })
+      }).finally(() => setLoading(false))
   }
 
   const handleClick = (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
@@ -94,9 +96,10 @@ export function useCotization () {
   return {
     cotization,
     cotizationCost,
+    modelOptions,
+    loading,
     handleSubmit,
     handleChange,
     handleClick,
-    modelOptions
   }
 }
