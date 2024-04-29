@@ -7,11 +7,11 @@ export function ErrorPage() {
         <h2 className='text-4xl text-center font-light mb-4 sm:text-7xl'>
           404
         </h2>
-        <p>
+        <p className='text-sm sm:text-base'>
           Not found |{' '}
           <Link
             to='/'
-            className='text-orange-500 hover:text-orange-600'
+            className='text-orange-500 font-semibold hover:text-orange-600'
           >
             Go home
           </Link>
