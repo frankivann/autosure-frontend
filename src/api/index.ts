@@ -11,11 +11,10 @@ export const GET = async <T> (endpoint: string, headers?: Record<string, string>
   } catch (error) {
 
     if (error && error instanceof AxiosError) {
-      toast.error(error.response?.data.message || 'Error')
+      toast.error(error.response?.data?.message || error.message)
 
     } else {
-      toast.error('Ha ocurrido un error')
-      console.log(error)
+      toast.error('An error has occurred')
     }
 
     throw new Error('Error al realizar la solicitud GET')
@@ -30,12 +29,10 @@ export const POST = async <T, R> (endpoint: string, data: T, headers?: Record<st
     
   } catch (error) {
 
-    if (error && error instanceof AxiosError) {
-      toast.error(error.response?.data.message || 'Error')
-
+    if (error instanceof AxiosError) {
+      toast.error(error.response?.data?.message || error.message) 
     } else {
-      toast.error('Ha ocurrido un error')
-      console.log(error)
+      toast.error('An error has ocurred')
     }
 
     throw new Error('Error al realizar la solicitud POST')
