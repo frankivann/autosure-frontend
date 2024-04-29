@@ -7,7 +7,7 @@ export function Header() {
 
   const show = toggle ? 'flex' : 'hidden'
   const background = toggle
-    ? 'bg-white/100 backdrop-blur-none'
+    ? 'bg-gray-50 backdrop-blur-none'
     : 'bg-white/80 backdrop-blur-lg'
 
   return (
@@ -42,12 +42,12 @@ export function Header() {
         </div>
 
         <ul
-          className={`${show} bg-white text-black text-xs absolute top-full inset-x-0 flex flex-col flex-wrap transition-all sm:relative sm:text-sm sm:flex sm:flex-row sm:items-center sm:gap-5 sm:bg-inherit`}
+          className={`${show} bg-gray-50 text-black text-xs absolute top-full inset-x-0 flex flex-col flex-wrap transition-all sm:relative sm:text-sm sm:flex sm:flex-row sm:items-center sm:gap-5 sm:bg-inherit`}
         >
           <li>
             <a
               href='#'
-              className='flex p-6 hover:bg-gray-100 transition-colors sm:p-2 sm:hover:bg-transparent sm:hover:text-gray-600'
+              className='flex px-10 py-6 hover:bg-gray-100 transition-colors sm:p-2 sm:hover:bg-transparent sm:hover:text-gray-600'
             >
               Services
             </a>
@@ -55,7 +55,7 @@ export function Header() {
           <li>
             <a
               href='#'
-              className='flex p-6 hover:bg-gray-100 transition-colors sm:p-2 sm:hover:bg-transparent sm:hover:text-gray-600'
+              className='flex px-10 py-6 hover:bg-gray-100 transition-colors sm:p-2 sm:hover:bg-transparent sm:hover:text-gray-600'
             >
               Infrastructures
             </a>
@@ -63,7 +63,7 @@ export function Header() {
           <li>
             <a
               href='#'
-              className='flex p-6 hover:bg-gray-100 transition-colors sm:p-2 sm:hover:bg-transparent sm:hover:text-gray-600'
+              className='flex px-10 py-6 hover:bg-gray-100 transition-colors sm:p-2 sm:hover:bg-transparent sm:hover:text-gray-600'
             >
               Motor
             </a>
@@ -71,7 +71,7 @@ export function Header() {
           <li>
             <a
               href='#'
-              className='flex p-6 hover:bg-gray-100 transition-colors sm:p-2 sm:hover:bg-transparent sm:hover:text-gray-600'
+              className='flex px-10 py-6 hover:bg-gray-100 transition-colors sm:p-2 sm:hover:bg-transparent sm:hover:text-gray-600'
             >
               About us
             </a>
