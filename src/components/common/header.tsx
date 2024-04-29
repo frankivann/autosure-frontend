@@ -1,17 +1,21 @@
-import { useState } from 'react'
 import { HamburgerIcon, LogoIcon } from '../icons'
 import { Link } from 'react-router-dom'
+import { useClickOutside } from '@src/hooks/use-click-outside'
 
 export function Header() {
-  const [toggle, setToggle] = useState(false)
+  const { ref, toggle, updateToggle } = useClickOutside<HTMLElement>()
+
   const show = toggle ? 'flex' : 'hidden'
   const background = toggle
     ? 'bg-white/100 backdrop-blur-none'
     : 'bg-white/80 backdrop-blur-lg'
 
   return (
-    <header className={`${background} fixed top-0 inset-x-0 z-10`}>
-      <nav className='text-sm relative flex items-center flex-wrap gap-2 justify-between max-w-screen-xl mx-auto px-10 py-4'>
+    <header className='fixed top-0 inset-x-0 z-10'>
+      <nav
+        ref={ref}
+        className={`${background} text-sm relative flex items-center flex-wrap gap-2 justify-between max-w-screen-xl mx-auto px-10 py-4`}
+      >
         <Link
           to='/'
           className='text-base flex items-center gap-2 -ml-1 p-1 sm:text-lg'
@@ -31,7 +35,7 @@ export function Header() {
 
           <button
             className='bg-gray-100 text-gray-500 p-1 rounded-lg hover:bg-gray-200 transition-colors'
-            onClick={() => setToggle(!toggle)}
+            onClick={() => updateToggle(!toggle)}
           >
             <HamburgerIcon />
           </button>
