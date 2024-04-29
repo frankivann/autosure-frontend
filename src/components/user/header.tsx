@@ -1,31 +1,16 @@
 import { Link, useNavigate } from 'react-router-dom'
+import { useClickOutside } from '@hooks/use-click-outside'
 import { BellIcon, LogoIcon } from '../icons'
-import { useEffect, useRef, useState } from 'react'
 import type { User } from '@src/types'
+
 import useAuthUser from 'react-auth-kit/hooks/useAuthUser'
 import useSignOut from 'react-auth-kit/hooks/useSignOut'
 
 export function Header() {
-  const [toggle, setToggle] = useState(false)
-  const ref = useRef<HTMLDivElement | null>(null)
   const user = useAuthUser<User | null>()
   const signout = useSignOut()
   const navigate = useNavigate()
-
-  useEffect(() => {
-    const handleClickOutside = (event: MouseEvent) => {
-      const menu = ref.current
-      if (!menu) return
-
-      const isTarget = menu.contains(event.target as Node)
-      if (!isTarget) setToggle(false)
-    }
-
-    window.document.addEventListener('click', handleClickOutside)
-    return () => {
-      window.document.removeEventListener('click', handleClickOutside)
-    }
-  }, [toggle])
+  const { ref, toggle, updateToggle } = useClickOutside<HTMLDivElement>()
 
   const handleSignOut = () => {
     signout()
@@ -85,7 +70,7 @@ export function Header() {
             >
               <button
                 className='bg-orange-500 size-6 flex items-center justify-center p-[18px] rounded-full'
-                onClick={() => setToggle(!toggle)}
+                onClick={() => updateToggle(!toggle)}
               >
                 <span className='text-orange-100 font-semibold uppercase'>
                   {user?.firstname.charAt(0)}
